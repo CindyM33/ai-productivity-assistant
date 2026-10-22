@@ -32,7 +32,7 @@ export const runAi = createServerFn({ method: "POST" })
     return input;
   })
   .handler(async ({ data }): Promise<{ ok: true; text: string } | { ok: false; error: string }> => {
-    if (!process.env.LOVABLE_API_KEY) {
+    if (!process.env['LOVABLE_API_KEY']) {
       return { ok: false, error: "The AI service isn't configured yet. Ask your workspace owner to enable Lovable AI." };
     }
     const { generateResponse, GatewayError, PaymentRequiredError, RateLimitError } = await import(
