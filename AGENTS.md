@@ -11,3 +11,4 @@
 
 ## Rules
 - All AI calls go through `runAi` in src/lib/ai.functions.ts (server-only, Lovable AI Gateway SDK) — keeps keys off the browser and guardrails in one place.
+- The Responsible AI disclaimer renders exactly once, from `ResponsibleAiBanner` in src/components/AppShell.tsx — individual pages and PageHeader must not render their own copy, so it stays visible app-wide without duplication.
