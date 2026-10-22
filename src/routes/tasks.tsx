@@ -29,7 +29,7 @@ function TasksPage() {
         canSubmit={tasks.trim().length > 0}
         buildPrompt={() => `Schedule type: ${range}\nWorking hours: ${hours}\nTasks (with any known deadlines/notes):\n${tasks}`}
       >
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid gap-3 sm:grid-cols-2">
           <label className="space-y-1 text-sm">
             <span className="text-muted-foreground">Schedule</span>
             <select className={fieldCls} value={range} onChange={(e) => setRange(e.target.value)}>

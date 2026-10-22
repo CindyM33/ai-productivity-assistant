@@ -13,11 +13,11 @@ const GUARD =
 
 const INSTRUCTIONS: Record<AiTask, string> = {
   email:
-    "Write a workplace email based on the user's details. Include a 'Subject:' line first, then the body. Match the requested tone and audience exactly.",
+    "Write one workplace email using only the user's tone, audience, purpose and key points. Output exactly this structure:\nSubject: <subject line>\n\n<greeting>\n\n<body paragraphs covering every key point>\n\n<closing>\n[Your name]\nMatch the requested tone and audience exactly.",
   notes:
-    "Summarise the meeting notes into these sections: SUMMARY, KEY DECISIONS, ACTION ITEMS (each with Owner and Deadline). Only use owners, decisions and deadlines that appear in the notes; otherwise write 'Not specified'.",
+    "Summarise the meeting notes. Output exactly these sections in order:\nSUMMARY\n<3-5 sentences>\n\nKEY DECISIONS\n- <decision>\n\nACTION ITEMS\n- <task> | Owner: <name> | Deadline: <date>\n\nOPEN QUESTIONS\n- <question>\nOnly use owners, decisions and deadlines that appear in the notes; otherwise write 'Not specified'. Write 'None' for an empty section.",
   tasks:
-    "Prioritise the user's tasks with the Eisenhower matrix (Urgent & Important, Important not urgent, Urgent not important, Neither). Then produce the requested daily or weekly schedule. Do not invent tasks or deadlines.",
+    "Prioritise the user's tasks with the Eisenhower matrix (Urgent & Important, Important not urgent, Urgent not important, Neither). Output exactly these sections:\nPRIORITIES\n<the four quadrants, each listing its tasks with a one-line reason>\n\nSCHEDULE\n<the requested daily or weekly schedule as time blocks within the working hours, e.g. 08:00–09:30 – Task>\n\nTIPS\n- <1-3 short, practical tips>\nUse only the user's tasks; do not invent tasks or deadlines.",
   research:
     "Give a concise, balanced overview of the topic with key points and questions to verify. Clearly state that facts should be checked against reliable sources. Do not fabricate statistics or citations.",
   chat: "Help with workplace questions concisely and practically.",
