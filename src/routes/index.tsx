@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Mail, FileText, ListChecks, ArrowRight, MessageSquare, ShieldCheck, Pencil, Sparkles } from "lucide-react";
-import { Notice } from "@/components/AiTool";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
@@ -32,7 +31,6 @@ const tools = [
 function Index() {
   return (
     <div className="space-y-8">
-      <Notice />
       <section className="relative overflow-hidden rounded-3xl bg-hero p-8 shadow-glow md:p-12">
         <p className="text-sm font-medium text-primary-foreground/80">Workly AI · by CAPACITI</p>
         <h1 className="mt-3 max-w-xl text-3xl font-semibold text-primary-foreground md:text-5xl">
