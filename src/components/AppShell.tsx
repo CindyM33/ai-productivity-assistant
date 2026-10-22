@@ -1,6 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { LayoutDashboard, Mail, FileText, ListChecks, Search, MessageSquare, Menu, X, Sparkles } from "lucide-react";
+import { ResponsibleAiBanner } from "@/components/ResponsibleAiBanner";
 
 const nav = [
   { to: "/", label: "Dashboard", icon: LayoutDashboard },
@@ -54,6 +55,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         </div>
       </aside>
       <div className="flex min-w-0 flex-1 flex-col md:pl-64">
+        <ResponsibleAiBanner />
         <header className="flex items-center gap-3 border-b border-border px-4 py-3 md:hidden">
           <button onClick={() => setOpen(true)} aria-label="Open menu">
             <Menu className="h-5 w-5" />

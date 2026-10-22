@@ -1,28 +1,15 @@
 import { useState, type ReactNode } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { Copy, Loader2, ShieldAlert, Sparkles } from "lucide-react";
+import { Copy, Loader2, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { runAi, type AiTask } from "@/lib/ai.functions";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 
-export function Notice() {
-  return (
-    <div className="flex items-start gap-3 rounded-xl border border-warning/30 bg-warning/10 px-4 py-3 text-sm">
-      <ShieldAlert className="mt-0.5 h-4 w-4 shrink-0 text-warning" />
-      <p className="text-muted-foreground">
-        <span className="font-semibold text-foreground">Responsible AI:</span> AI-generated content can be wrong and
-        requires human review. Don't enter confidential or sensitive workplace data unless this service is approved
-        for it by your organisation.
-      </p>
-    </div>
-  );
-}
 
 export function PageHeader({ title, desc }: { title: string; desc: string }) {
   return (
-    <div className="mb-6 space-y-4">
-      <Notice />
+    <div className="mb-6">
       <div>
         <h1 className="text-2xl font-semibold md:text-3xl">{title}</h1>
         <p className="mt-1 text-muted-foreground">{desc}</p>
