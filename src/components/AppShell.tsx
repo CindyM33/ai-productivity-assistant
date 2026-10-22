@@ -1,6 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { LayoutDashboard, Mail, FileText, ListChecks, Search, MessageSquare, Menu, X, Sparkles } from "lucide-react";
+import { LayoutDashboard, Mail, FileText, ListChecks, Menu, X, Sparkles } from "lucide-react";
 import { ResponsibleAiBanner } from "@/components/ResponsibleAiBanner";
 
 const nav = [
@@ -8,8 +8,6 @@ const nav = [
   { to: "/email", label: "Email Generator", icon: Mail },
   { to: "/notes", label: "Notes Summarizer", icon: FileText },
   { to: "/tasks", label: "Task Planner", icon: ListChecks },
-  { to: "/research", label: "Research", icon: Search },
-  { to: "/chat", label: "AI Chat", icon: MessageSquare },
 ] as const;
 
 export function AppShell({ children }: { children: ReactNode }) {

@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Mail, FileText, ListChecks, ArrowRight, MessageSquare, ShieldCheck, Pencil, Sparkles } from "lucide-react";
+import { Mail, FileText, ListChecks, ArrowRight, ShieldCheck, Pencil, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/")({
 });
 
 const stats = [
-  { icon: Sparkles, label: "AI tools", value: "5 available" },
+  { icon: Sparkles, label: "AI tools", value: "3 available" },
   { icon: Pencil, label: "Outputs", value: "Editable & copyable" },
   { icon: ShieldCheck, label: "Review", value: "Human in the loop" },
 ];
@@ -44,7 +44,7 @@ function Index() {
             <Link to="/email"><Mail className="h-4 w-4" /> Start with Email</Link>
           </Button>
           <Button asChild variant="outline" size="lg" className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
-            <Link to="/chat"><MessageSquare className="h-4 w-4" /> Open AI Chat</Link>
+            <Link to="/tasks"><ListChecks className="h-4 w-4" /> Plan my tasks</Link>
           </Button>
         </div>
       </section>
