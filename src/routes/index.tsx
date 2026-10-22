@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Workly AI by CAPACITI — Dashboard" },
+      { title: "AI Workplace Productivity Assistant — Dashboard" },
       { name: "description", content: "Draft emails, summarise meetings and plan tasks with an AI workplace assistant." },
-      { property: "og:title", content: "Workly AI by CAPACITI" },
+      { property: "og:title", content: "AI Workplace Productivity Assistant" },
       { property: "og:description", content: "Your AI workplace assistant for emails, meeting notes and task planning." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -32,7 +32,7 @@ function Index() {
   return (
     <div className="space-y-8">
       <section className="relative overflow-hidden rounded-3xl bg-hero p-8 shadow-glow md:p-12">
-        <p className="text-sm font-medium text-primary-foreground/80">Workly AI · by CAPACITI</p>
+        <p className="text-sm font-medium text-primary-foreground/80">AI Workplace Productivity Assistant</p>
         <h1 className="mt-3 max-w-xl text-3xl font-semibold text-primary-foreground md:text-5xl">
           Your AI workplace assistant
         </h1>

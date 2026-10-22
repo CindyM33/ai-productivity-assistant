@@ -10,9 +10,9 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/chat")({
   head: () => ({
     meta: [
-      { title: "AI Chat — Workly AI" },
-      { name: "description", content: "Chat with Workly AI about everyday workplace questions." },
-      { property: "og:title", content: "AI Chat — Workly AI" },
+      { title: "AI Chat — AI Workplace Assistant" },
+      { name: "description", content: "Chat with the AI Workplace Assistant about everyday workplace questions." },
+      { property: "og:title", content: "AI Chat — AI Workplace Assistant" },
       { property: "og:description", content: "A workplace AI chat assistant." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

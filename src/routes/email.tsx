@@ -5,9 +5,9 @@ import { AiTool, PageHeader, fieldCls } from "@/components/AiTool";
 export const Route = createFileRoute("/email")({
   head: () => ({
     meta: [
-      { title: "Smart Email Generator — Workly AI" },
+      { title: "Smart Email Generator — AI Workplace Assistant" },
       { name: "description", content: "Generate formal, informal or persuasive workplace emails for any audience." },
-      { property: "og:title", content: "Smart Email Generator — Workly AI" },
+      { property: "og:title", content: "Smart Email Generator — AI Workplace Assistant" },
       { property: "og:description", content: "AI-drafted workplace emails you can edit and copy." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

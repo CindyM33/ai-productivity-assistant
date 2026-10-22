@@ -5,9 +5,9 @@ import { AiTool, PageHeader, fieldCls } from "@/components/AiTool";
 export const Route = createFileRoute("/tasks")({
   head: () => ({
     meta: [
-      { title: "AI Task Planner — Workly AI" },
+      { title: "AI Task Planner — AI Workplace Assistant" },
       { name: "description", content: "Prioritise tasks by urgency and importance and build daily or weekly schedules." },
-      { property: "og:title", content: "AI Task Planner — Workly AI" },
+      { property: "og:title", content: "AI Task Planner — AI Workplace Assistant" },
       { property: "og:description", content: "Urgency/importance prioritisation with daily or weekly plans." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

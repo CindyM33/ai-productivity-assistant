@@ -9,7 +9,7 @@ type Input = {
 };
 
 const GUARD =
-  "You are Workly AI, a workplace productivity assistant. Never invent facts, names, decisions, owners, or deadlines. If information is missing from the user's input, write 'Not specified' or use a clear [placeholder]. Use plain text with simple headings and bullet points.";
+  "You are the AI Workplace Productivity Assistant, a workplace productivity assistant. Never invent facts, names, decisions, owners, or deadlines. If information is missing from the user's input, write 'Not specified' or use a clear [placeholder]. Use plain text with simple headings and bullet points.";
 
 const INSTRUCTIONS: Record<AiTask, string> = {
   email:

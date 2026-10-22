@@ -27,8 +27,8 @@ export function AppShell({ children }: { children: ReactNode }) {
             <Sparkles className="h-5 w-5 text-primary-foreground" />
           </div>
           <div>
-            <p className="font-display text-lg font-semibold leading-none">Workly AI</p>
-            <p className="mt-1 text-xs text-muted-foreground">by CAPACITI</p>
+            <p className="font-display text-lg font-semibold leading-tight">AI Workplace</p>
+            <p className="mt-1 text-xs text-muted-foreground">Productivity Assistant</p>
           </div>
           <button className="ml-auto md:hidden" onClick={() => setOpen(false)} aria-label="Close menu">
             <X className="h-5 w-5" />
@@ -51,7 +51,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           })}
         </nav>
         <div className="m-3 rounded-xl border border-sidebar-border p-4 text-xs text-muted-foreground">
-          AI output needs human review. Powered by CAPACITI.
+          AI output needs human review.
         </div>
       </aside>
       <div className="flex min-w-0 flex-1 flex-col md:pl-64">
@@ -60,7 +60,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           <button onClick={() => setOpen(true)} aria-label="Open menu">
             <Menu className="h-5 w-5" />
           </button>
-          <span className="font-display font-semibold">Workly AI</span>
+          <span className="font-display font-semibold truncate">AI Workplace Productivity Assistant</span>
         </header>
         <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 md:px-8 md:py-8">{children}</main>
       </div>

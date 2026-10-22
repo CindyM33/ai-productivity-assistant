@@ -5,9 +5,9 @@ import { AiTool, PageHeader, fieldCls } from "@/components/AiTool";
 export const Route = createFileRoute("/research")({
   head: () => ({
     meta: [
-      { title: "Research Assistant — Workly AI" },
+      { title: "Research Assistant — AI Workplace Assistant" },
       { name: "description", content: "Get a balanced AI overview of a workplace topic, with points to verify." },
-      { property: "og:title", content: "Research Assistant — Workly AI" },
+      { property: "og:title", content: "Research Assistant — AI Workplace Assistant" },
       { property: "og:description", content: "Quick topic overviews with verification prompts." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
