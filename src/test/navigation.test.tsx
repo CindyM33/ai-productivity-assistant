@@ -55,7 +55,7 @@ describe("Dashboard", () => {
 
     expect(screen.getByText("3 available")).toBeTruthy();
     expect(screen.queryByText("5 available")).toBeNull();
-    const hrefs = Array.from(document.querySelectorAll("main a")).map((a) => a.getAttribute("href"));
+    const hrefs = screen.getAllByRole("link").map((a) => a.getAttribute("href"));
     expect(hrefs).toContain("/email");
     expect(hrefs).toContain("/notes");
     expect(hrefs).toContain("/tasks");
