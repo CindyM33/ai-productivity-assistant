@@ -1,27 +1,50 @@
-import { QueryClient } from "@tanstack/react-query";
-import { RouterProvider, createRouter } from "@tanstack/react-router";
-import { render, screen, waitFor } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 
-import { routeTree } from "@/routeTree.gen";
-import { RESPONSIBLE_AI_TEXT } from "@/components/ResponsibleAiBanner";
+// AppShell reads the router for the active nav item and renders Link. Stub just
+// those pieces so the shared layout can be rendered without the Start runtime.
+vi.mock("@tanstack/react-router", async (importOriginal) => {
+  const mod = await importOriginal<typeof import("@tanstack/react-router")>();
+  return {
+    ...mod,
+    useRouterState: () => "/",
+    Link: ({ children, ...rest }: Record<string, unknown>) => {
+      const { to: _to, ...anchorProps } = rest as { to?: string } & Record<string, unknown>;
+      return <a {...anchorProps}>{children}</a>;
+    },
+  };
+});
 
-const FULL_DISCLAIMER = `Responsible AI: ${RESPONSIBLE_AI_TEXT}`;
+const { AppShell } = await import("@/components/AppShell");
+const { PageHeader } = await import("@/components/AiTool");
 
-// The disclaimer is policy: it must stay on every page, word for word, exactly once.
+// Wording is fixed by policy — assert the literal text so a reword fails here.
+const FULL_DISCLAIMER =
+  "Responsible AI: AI-generated content can be wrong and requires human review. " +
+  "Don't enter confidential or sensitive workplace data unless this service is " +
+  "approved for it by your organisation.";
+
+function text(el: HTMLElement) {
+  return el.textContent?.replace(/\s+/g, " ").trim();
+}
+
 describe("Responsible AI disclaimer", () => {
-  const pages = ["/", "/email", "/notes", "/tasks"] as const;
+  it("is rendered once, in full, by the shared app layout", () => {
+    render(
+      <AppShell>
+        <div data-testid="page" />
+      </AppShell>,
+    );
 
-  for (const path of pages) {
-    it(`shows the full disclaimer once on ${path}`, async () => {
-      const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
-      render(<RouterProvider router={router} />);
-      await router.navigate({ to: path });
-      await waitFor(() => expect(screen.getByRole("note")).toBeInTheDocument());
+    const banners = screen.getAllByRole("note");
+    expect(banners).toHaveLength(1);
+    expect(text(banners[0]!)).toBe(FULL_DISCLAIMER);
+  });
 
-      const banners = screen.getAllByRole("note");
-      expect(banners).toHaveLength(1);
-      expect(banners[0]!.textContent?.replace(/\s+/g, " ").trim()).toBe(FULL_DISCLAIMER);
-    });
-  }
+  it("is not repeated by the per-page header", () => {
+    render(<PageHeader title="Smart Email Generator" desc="Describe what you need." />);
+
+    expect(screen.queryByRole("note")).toBeNull();
+    expect(document.body.textContent).not.toContain("Responsible AI");
+  });
 });
