@@ -1,24 +1,87 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Mail, FileText, ListChecks, ArrowRight, MessageSquare, ShieldCheck, Pencil, Sparkles } from "lucide-react";
+import { Notice } from "@/components/AiTool";
+import { Button } from "@/components/ui/button";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Workly AI by CAPACITI — Dashboard" },
+      { name: "description", content: "Draft emails, summarise meetings and plan tasks with an AI workplace assistant." },
+      { property: "og:title", content: "Workly AI by CAPACITI" },
+      { property: "og:description", content: "Your AI workplace assistant for emails, meeting notes and task planning." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
+const stats = [
+  { icon: Sparkles, label: "AI tools", value: "5 available" },
+  { icon: Pencil, label: "Outputs", value: "Editable & copyable" },
+  { icon: ShieldCheck, label: "Review", value: "Human in the loop" },
+];
+
+const tools = [
+  { to: "/email", icon: Mail, title: "Smart Email Generator", desc: "Draft formal, informal or persuasive emails for clients, managers or your team." },
+  { to: "/notes", icon: FileText, title: "Meeting Notes Summarizer", desc: "Turn raw notes into a summary, decisions, action items, owners and deadlines." },
+  { to: "/tasks", icon: ListChecks, title: "AI Task Planner", desc: "Prioritise by urgency and importance, then get a daily or weekly schedule." },
+] as const;
+
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="space-y-8">
+      <Notice />
+      <section className="relative overflow-hidden rounded-3xl bg-hero p-8 shadow-glow md:p-12">
+        <p className="text-sm font-medium text-primary-foreground/80">Workly AI · by CAPACITI</p>
+        <h1 className="mt-3 max-w-xl text-3xl font-semibold text-primary-foreground md:text-5xl">
+          Your AI workplace assistant
+        </h1>
+        <p className="mt-4 max-w-lg text-primary-foreground/85">
+          Write emails, summarise meetings and plan your work in one place — then review and refine every result.
+        </p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Button asChild variant="secondary" size="lg">
+            <Link to="/email"><Mail className="h-4 w-4" /> Start with Email</Link>
+          </Button>
+          <Button asChild variant="outline" size="lg" className="border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground">
+            <Link to="/chat"><MessageSquare className="h-4 w-4" /> Open AI Chat</Link>
+          </Button>
+        </div>
+      </section>
+
+      <section className="grid gap-4 sm:grid-cols-3">
+        {stats.map((s) => (
+          <div key={s.label} className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15">
+              <s.icon className="h-5 w-5 text-primary" />
+            </div>
+            <div>
+              <p className="text-xs text-muted-foreground">{s.label}</p>
+              <p className="font-semibold">{s.value}</p>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <section>
+        <h2 className="mb-4 text-xl font-semibold">Productivity Tools</h2>
+        <div className="grid gap-4 md:grid-cols-3">
+          {tools.map((t) => (
+            <Link key={t.to} to={t.to} className="group rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary/50">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent-gradient">
+                <t.icon className="h-5 w-5 text-primary-foreground" />
+              </div>
+              <h3 className="mt-5 font-semibold">{t.title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{t.desc}</p>
+              <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-primary">
+                Open tool <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
