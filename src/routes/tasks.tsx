@@ -5,9 +5,9 @@ import { AiTool, PageHeader, fieldCls } from "@/components/AiTool";
 export const Route = createFileRoute("/tasks")({
   head: () => ({
     meta: [
-      { title: "AI Task Planner — Workly AI" },
+      { title: "AI Task Planner — AI Workplace Assistant" },
       { name: "description", content: "Prioritise tasks by urgency and importance and build daily or weekly schedules." },
-      { property: "og:title", content: "AI Task Planner — Workly AI" },
+      { property: "og:title", content: "AI Task Planner — AI Workplace Assistant" },
       { property: "og:description", content: "Urgency/importance prioritisation with daily or weekly plans." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -29,7 +29,7 @@ function TasksPage() {
         canSubmit={tasks.trim().length > 0}
         buildPrompt={() => `Schedule type: ${range}\nWorking hours: ${hours}\nTasks (with any known deadlines/notes):\n${tasks}`}
       >
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid gap-3 sm:grid-cols-2">
           <label className="space-y-1 text-sm">
             <span className="text-muted-foreground">Schedule</span>
             <select className={fieldCls} value={range} onChange={(e) => setRange(e.target.value)}>

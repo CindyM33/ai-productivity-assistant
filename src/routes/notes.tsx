@@ -5,9 +5,9 @@ import { AiTool, PageHeader, fieldCls } from "@/components/AiTool";
 export const Route = createFileRoute("/notes")({
   head: () => ({
     meta: [
-      { title: "Meeting Notes Summarizer — Workly AI" },
+      { title: "Meeting Notes Summarizer — AI Workplace Assistant" },
       { name: "description", content: "Summarise meeting notes into decisions, action items, owners and deadlines." },
-      { property: "og:title", content: "Meeting Notes Summarizer — Workly AI" },
+      { property: "og:title", content: "Meeting Notes Summarizer — AI Workplace Assistant" },
       { property: "og:description", content: "Turn raw meeting notes into clear, reviewable summaries." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

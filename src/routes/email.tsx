@@ -5,9 +5,9 @@ import { AiTool, PageHeader, fieldCls } from "@/components/AiTool";
 export const Route = createFileRoute("/email")({
   head: () => ({
     meta: [
-      { title: "Smart Email Generator — Workly AI" },
+      { title: "Smart Email Generator — AI Workplace Assistant" },
       { name: "description", content: "Generate formal, informal or persuasive workplace emails for any audience." },
-      { property: "og:title", content: "Smart Email Generator — Workly AI" },
+      { property: "og:title", content: "Smart Email Generator — AI Workplace Assistant" },
       { property: "og:description", content: "AI-drafted workplace emails you can edit and copy." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -30,7 +30,7 @@ function EmailPage() {
         canSubmit={purpose.trim().length > 0}
         buildPrompt={() => `Tone: ${tone}\nAudience: ${audience}\nPurpose: ${purpose}\nKey points:\n${points || "None provided"}`}
       >
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid gap-3 sm:grid-cols-2">
           <label className="space-y-1 text-sm">
             <span className="text-muted-foreground">Tone</span>
             <select className={fieldCls} value={tone} onChange={(e) => setTone(e.target.value)}>
